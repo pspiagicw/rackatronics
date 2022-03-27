@@ -1,43 +1,43 @@
-#' Simple Nearest Neighbors Classifier
-#' It returns a classifier configured to classify
-#' @param x Data points(Features of the data)
-#' @param y Labels of the data
-#' @keywords nearest neighbors
-#' @export
-nearest_classifier <- function(x) {
-    classifier <- list(name = "K-Nearest Classifier")
+nearest_classifier <- function(x = x , y = y) {
+    classifier <- list(name = "K-Nearest Classifier" , X = x , Y = y)
     class(classifier) <- "knn"
     return(classifier)
 }
 
-#' Predicts a data point
-#'
-#' @param obj The model
-#' @param x The data points to predict
-#' @method predict knn
-#' @export
 predict.knn <- function(knn , x ) {
-    cat("To predict" , x)
+    assertthat::assert_that(nrow(knn$X) == nrow(x))
+    distances <- c()
+    n <- nrow(x)
+    for(i in 1:n) {
+        distance <- euclidean(knn$X[i,] , x[i,])
+        distances <- append(distances , distance)
+    }
+    results <- smallest(distances , 3)
+    print(distances , results)
+}
+smallest <- function(l , k) {
+    return(head(sort(unlist(data)) , k))
 }
 
-#' Prints the model
-#'
-#' @param obj The model
-#' @method print knn
-#' @export
 print.knn <- function(knn ,  ...) {
-    cat("This is a KNN")
+    cat("K-Nearest Neighbors Classifier\n")
 }
-#' Fits the data
-#'
-#' @param X The features of the data
-#' @param Y The labels of the data
-#' @method fit knn
-#' @export
-fit.knn <- function(knn , X , Y ) {
-    data <- list(X = X , Y = Y)
-    knn <- append(knn , data)
-    return(knn)
+score.knn <- function(knn , x , y) {
+    cat("This is the scoring function\n")
 }
+euclidean <- function(x , y) {
+    assertthat::assert_that(ncol(x) == ncol(y))
+    n <- ncol(x)
+    distance <- 0
+    for(i in  1:n) {
+        diff <- x[i] - y[i]
+        diff <- diff^2
+        distance <- distance + diff
+    }
+    return(sqrt(distance))
+}
+
+
+
 
 
