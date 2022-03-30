@@ -2,12 +2,12 @@
 % Please edit documentation in R/generic.R
 \name{fit}
 \alias{fit}
-\title{Predict Generic Function
-This declares a generic function \code{predict}}
+\title{Fit Generic Function
+This declares a generic function 'fit'}
 \usage{
-fit(obj)
+fit(obj, ...)
 }
 \description{
-Predict Generic Function
-This declares a generic function \code{predict}
+Fit Generic Function
+This declares a generic function 'fit'
 }

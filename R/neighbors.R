@@ -4,7 +4,7 @@
 #' @param y Labels of the data
 #' @keywords nearest neighbors
 #' @export
-nearest_classifier <- function(x) {
+nearest_classifier <- function() {
     classifier <- list(name = "K-Nearest Classifier")
     class(classifier) <- "knn"
     return(classifier)

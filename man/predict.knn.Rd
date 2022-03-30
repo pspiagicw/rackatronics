@@ -4,12 +4,12 @@
 \alias{predict.knn}
 \title{Predicts a data point}
 \usage{
-\method{predict}{knn}(obj, x)
+\method{predict}{knn}(knn, x)
 }
 \arguments{
-\item{obj}{The model}
-
 \item{x}{The data points to predict}
+
+\item{obj}{The model}
 }
 \description{
 Predicts a data point

@@ -5,7 +5,7 @@
 \title{Simple Nearest Neighbors Classifier
 It returns a classifier configured to classify}
 \usage{
-nearest_classifier(x)
+nearest_classifier()
 }
 \arguments{
 \item{x}{Data points(Features of the data)}

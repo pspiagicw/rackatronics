@@ -4,7 +4,7 @@
 \alias{print.knn}
 \title{Prints the model}
 \usage{
-\method{print}{knn}(obj, ...)
+\method{print}{knn}(knn, ...)
 }
 \arguments{
 \item{obj}{The model}
