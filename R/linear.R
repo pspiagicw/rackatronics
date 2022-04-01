@@ -39,5 +39,25 @@ fit.linear_regressor <- function(obj, x , y , ...) {
 
         coefs <- append(coefs , sum_xy / sum_x2)
     }
-    return(coefs)
+
+    sum <- 0
+    for(i in 1:ncol(x)) {
+        sum <- sum + coefs[i] * means[i]
+    }
+    intercept <- mean_y - sum
+}
+
+#'@export
+predict.linear_regressor <- function(obj , x  , ...) {
+    n <- ncol(x)
+    predictions <- c()
+    for(i in 1:nrow(x)) {
+        sum <- 0 
+        for(j in 1:ncol(x)) {
+            sum <- sum + obj$coefs[j] * x[i,j]
+        }
+        sum <- sum + obj$intercept
+        predictions <- append(predictions , sum)
+    }
+    return(predictions)
 }
